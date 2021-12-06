@@ -40,7 +40,7 @@ func RegisterInput(data string) error {
 
 // Part 1 solves the puzzle itself and returns the result. It calls other
 // internal helper functions to get the result. It solves the first part.
-func Part1() (interface{}, error) {
+func Part1() (int, error) {
 	horizontal, depth := 0, 0
 	for _, v := range input {
 		switch v.command {
@@ -59,7 +59,7 @@ func Part1() (interface{}, error) {
 
 // Part 2 solves the puzzle itself and returns the result. It calls other
 // internal helper functions to get the result. It solves the second part.
-func Part2() (interface{}, error) {
+func Part2() (int, error) {
 	horizontal, depth, aim := 0, 0, 0
 	for _, v := range input {
 		switch v.command {
