@@ -8,6 +8,7 @@ import (
 
 	"github.com/jansvabik/advent-of-code-2021/internal/day01"
 	"github.com/jansvabik/advent-of-code-2021/internal/day02"
+	"github.com/jansvabik/advent-of-code-2021/internal/day03"
 )
 
 // Structure with all the public day functions that are going to be called
@@ -24,6 +25,7 @@ type dayFunc struct {
 var dayFuncs = [...]dayFunc{
 	{day01.RegisterInput, day01.Part1, day01.Part2},
 	{day02.RegisterInput, day02.Part1, day02.Part2},
+	{day02.RegisterInput, day03.Part1, day03.Part2},
 }
 
 func main() {

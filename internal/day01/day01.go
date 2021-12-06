@@ -48,13 +48,13 @@ func RegisterInput(data string) error {
 // internal helper functions to get the result. It solves the first part.
 // It is calculated during the input registering for faster processing so
 // this function only returns the result.
-func Part1() (int, error) {
+func Part1() (interface{}, error) {
 	return increments, nil
 }
 
 // Part 2 solves the puzzle itself and returns the result. It calls other
 // internal helper functions to get the result. It solves the second part.
-func Part2() (int, error) {
+func Part2() (interface{}, error) {
 	lastGroupSum := int(^uint(0) >> 1)
 	incrementsPt2 := 0
 	for i := range input {

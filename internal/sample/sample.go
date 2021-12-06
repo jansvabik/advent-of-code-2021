@@ -38,14 +38,14 @@ func RegisterInput(data string) error {
 
 // Part 1 solves the puzzle itself and returns the result. It calls other
 // internal helper functions to get the result. It solves the first part.
-func Part1() (int, error) {
+func Part1() (interface{}, error) {
 	result := 0
 	return result, nil
 }
 
 // Part 2 solves the puzzle itself and returns the result. It calls other
 // internal helper functions to get the result. It solves the second part.
-func Part2() (int, error) {
+func Part2() (interface{}, error) {
 	result := 0
 	return result, nil
 }
