@@ -19,6 +19,8 @@ var numbersToCall = []int{}
 // This variable stores the list of numbers that has already been called.
 var calledNumbers = map[int]struct{}{}
 
+// This map holds the number of boards that has already won. It is used just
+// for checking if one particular board already won or not.
 var wonBoards = map[int]struct{}{}
 
 // Default board for creating new board. It is filled with -1 values for
@@ -114,7 +116,7 @@ func Part1() (interface{}, error) {
 // internal helper functions to get the result. It solves the second part.
 func Part2() (interface{}, error) {
 	var lastWonBoardPoints int
-	for _, calledNumber := range numbersToCall[len(calledNumbers):] {
+	for _, calledNumber := range numbersToCall[len(calledNumbers):] { // starting at the part 1 end point
 		calledNumbers[calledNumber] = struct{}{}
 		for boardIndex, board := range boards {
 			for row := range board {
