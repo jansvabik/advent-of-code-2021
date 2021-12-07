@@ -11,6 +11,7 @@ import (
 	"github.com/jansvabik/advent-of-code-2021/internal/day03"
 	"github.com/jansvabik/advent-of-code-2021/internal/day04"
 	"github.com/jansvabik/advent-of-code-2021/internal/day05"
+	"github.com/jansvabik/advent-of-code-2021/internal/day06"
 )
 
 // Structure with all the public day functions that are going to be called
@@ -30,6 +31,7 @@ var dayFuncs = [...]dayFunc{
 	{day03.RegisterInput, day03.Part1, day03.Part2},
 	{day04.RegisterInput, day04.Part1, day04.Part2},
 	{day05.RegisterInput, day05.Part1, day05.Part2},
+	{day06.RegisterInput, day06.Part1, day06.Part2},
 }
 
 func main() {
