@@ -44,22 +44,7 @@ func RegisterInput(data string) error {
 func Part1() (interface{}, error) {
 	flashes := 0
 	for i := 0; i < 100; i++ {
-		// increment all the octopuses' energy
-		incrementEnergies(&matrix)
-
-		// while there is at least one octopus that is charged (which means
-		// that is has energy > 9 and hasn't flashed this step yet), keep
-		// flashing these octopuses
-		exists, row, col := chargedOctopusExists(&matrix)
-		for exists {
-			runOctopusFirework(&matrix, row, col)
-			flashes++
-			exists, row, col = chargedOctopusExists(&matrix)
-		}
-
-		// this is the end of this step, set all octopuses flashed status
-		// to boolean false for the next step
-		resetFlashes(&matrix)
+		flashes += handleStep()
 	}
 	return flashes, nil
 }
@@ -67,8 +52,42 @@ func Part1() (interface{}, error) {
 // Part 2 solves the puzzle itself and returns the result. It calls other
 // internal helper functions to get the result. It solves the second part.
 func Part2() (interface{}, error) {
-	result := 0
-	return result, nil
+	steps := 0
+	for !isSynchronized(&matrix) {
+		handleStep()
+		steps++
+	}
+
+	// return the number of steps increased by the number of steps done in the
+	// first part of this puzzle
+	return 100 + steps, nil
+}
+
+// This function handles one step in the puzzle. That means that it increments
+// the energies of all octopuses, checks if there are some octopuses that are
+// charged and ready to flash (and handles such a situation) and at the end it
+// resets the flash status of all octopuses.
+func handleStep() int {
+	// flashes counter
+	flashes := 0
+
+	// increment all the octopuses' energy
+	incrementEnergies(&matrix)
+
+	// while there is at least one octopus that is charged (which means
+	// that is has energy > 9 and hasn't flashed this step yet), keep
+	// flashing these octopuses
+	exists, row, col := chargedOctopusExists(&matrix)
+	for exists {
+		runOctopusFirework(&matrix, row, col)
+		flashes++
+		exists, row, col = chargedOctopusExists(&matrix)
+	}
+
+	// this is the end of this step, set all octopuses flashed status
+	// to boolean false for the next step
+	resetFlashes(&matrix)
+	return flashes
 }
 
 // This function checks if there is at least one octopus which is ready to
@@ -122,6 +141,20 @@ func incrementEnergies(matrix *[size][size]octopus) {
 			matrix[i][j].energy++
 		}
 	}
+}
+
+// This function returns true if all octopuses are charged to the same value
+// and false if they are not.
+func isSynchronized(matrix *[size][size]octopus) bool {
+	referenceValue := matrix[0][0].energy
+	for _, row := range matrix {
+		for _, v := range row {
+			if referenceValue != v.energy {
+				return false
+			}
+		}
+	}
+	return true
 }
 
 // This function determines the index change of one octopus that flashed.
