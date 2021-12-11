@@ -13,6 +13,10 @@ import (
 	"github.com/jansvabik/advent-of-code-2021/internal/day05"
 	"github.com/jansvabik/advent-of-code-2021/internal/day06"
 	"github.com/jansvabik/advent-of-code-2021/internal/day07"
+	"github.com/jansvabik/advent-of-code-2021/internal/day08"
+	"github.com/jansvabik/advent-of-code-2021/internal/day09"
+	"github.com/jansvabik/advent-of-code-2021/internal/day10"
+	"github.com/jansvabik/advent-of-code-2021/internal/day11"
 )
 
 // Structure with all the public day functions that are going to be called
@@ -34,6 +38,10 @@ var dayFuncs = [...]dayFunc{
 	{day05.RegisterInput, day05.Part1, day05.Part2},
 	{day06.RegisterInput, day06.Part1, day06.Part2},
 	{day07.RegisterInput, day07.Part1, day07.Part2},
+	{day08.RegisterInput, day08.Part1, day08.Part2},
+	{day09.RegisterInput, day09.Part1, day09.Part2},
+	{day10.RegisterInput, day10.Part1, day10.Part2},
+	{day11.RegisterInput, day11.Part1, day11.Part2},
 }
 
 func main() {
